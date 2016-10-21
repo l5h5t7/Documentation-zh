@@ -28,10 +28,3 @@ h3, h4, h5, h6 { color: #2980b9 }
 
 .section blockquote { background-color: #e7f2fa; margin: 20px 0px; padding: 10px; border-left: 2px solid #2980B9; }
 .section blockquote p { margin: 4px 0px; }
-
-#disqus_thread { margin-bottom: 50px }
-
-.loadcomments {
-	padding: 10px 15px; display: inline-block; border-radius: 2px; border-bottom: 2px solid #CDBD1E; transition: all 0.5s;
-	background-color: #FFF85F; font-size: 20px; line-height: 31px; background-position: left center
-}

@@ -5,7 +5,7 @@ site_description: Decentralized websites using Bitcoin crypto and the BitTorrent
 repo_url: https://github.com/HelloZeroNet/ZeroNet
 
 extra_css: [docs.css]
-extra_javascript: [docs.js]
+#extra_javascript: [docs.js]
 
 
 pages:
