@@ -1,6 +1,6 @@
-# What is ZeroNet?
+# ZeroNet 是什么?
 
-ZeroNet uses Bitcoin cryptography and BitTorrent technology to build a **decentralized censorship-resistant network**.
+ZeroNet 使用 Bitcoin 加密算法以及 BitTorrent 技术以建立一个 **分布式抗审查的网络**。
 
 Users can publish static or dynamic websites into ZeroNet and visitors can choose to also serve the website. Websites will remain online even if it is being served by only one peer.
 
@@ -9,15 +9,15 @@ When a site is updated by its owner, all nodes serving that site (previous visit
 ZeroNet comes with a built-in SQL database. This makes content-heavy site development easy. The DB is also synced with hosting nodes with incremental updates.
 
 
-# Why?
+# 为什么要使用?
 
-* We believe in open, free, and uncensored communication.
-* No censorship: After something is published there is no way to remove it.
-* No single point of failure: Content remains online even if only one peer is serving it.
-* Impossible to shut down: It's nowhere because it's everywhere. Content is served by any user who wishes to.
-* Fast: ZeroNet uses BitTorrent technology to deliver content faster than centralised servers.
-* Works offline: You can access the site even if your internet is unavailable.
-* Secure: Content ownership is secured using the same cryptography that secures your Bitcoin wallet.
+* 我们相信开放，自由，无审查的网络。
+* 没有审查: 一旦发布就无法删除。
+* 不会受单点故障影响: 内容将保持在线即使只有一个节点。
+* 无法关闭: 节点无处不在。内容由用户自愿共享 (Content is served by any user who wishes to).
+* 迅速: ZeroNet 使用 BitTorrent 技术使内容发送快过中心化的服务器。
+* 离线工作: 即使互联网不可用时也可以访问站点。
+* 安全: 内容所有权 (Content ownership) 是使用和 Bitcoin wallet 相同的加密算法加密的。
 
 [comment]: <> (I'm unsure about the following bit. Thoughts?)
 [comment]: <> (# What problem is ZeroNet solving?)
@@ -37,56 +37,57 @@ ZeroNet comes with a built-in SQL database. This makes content-heavy site develo
 [comment]: <> (This architecture means that when a site URL is created, as long as one peer is serving it, there is no way to take the URL down.)
 
 
-# Features
- * Easy, zero configuration setup.
- * Password-less [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
-   based authorization: Your account is protected by the same cryptography as your Bitcoin wallet.
- * Real-time updated sites.
- * Namecoin .bit domains support.
- * SQL Database support: Allows for easier site development and faster page load times.
- * Anonymity: Full Tor network support with .onion hidden services instead of ipv4 addresses
- * TLS encrypted connections.
- * Automatic, uPnP port opening.
- * Plugin for multiuser (openproxy) support.
- * Works with any browser/OS.
+# 功能
+ * 简单，无需配置即可运行。
+ * 无需密码的基于 [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)
+   的认证: 使用和 Bitcoin wallet 相同的加密算法来保护你的账号。
+ * 实时更新站点。
+ * Namecoin .bit 域名支持。
+ * SQL 数据库支持: 让站点开发更简单并且加快页面加载。
+ * 匿名: 完整的 Tor 网络支持通过 .onion 隐藏服务 (.onion hidden services) 而不是 ipv4 地址。
+ * TLS 加密连接。
+ * 自动 UPnP 端口转发。
+ * 多用户 (开放代理) 插件支持。
+ * 在任何浏览器/操作系统上工作。
 
 
-# How does it work?
+# 它是如何工作的?
 
-* After you install and run ZeroNet, you open a site by visiting:
+* 在你安装并运行 ZeroNet 后，浏览以下地址打开一个站点:
   `http://127.0.0.1:43110/{zeronet_site_address}`
-  (eg.  `http://127.0.0.1:43110/1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D`).
-* ZeroNet will then use the BitTorrent network to find peers that are seeding the site and will download the site content (HTML, CSS, JS...) from these peers.
-* Each visited site becomes also served by you.
+  (例如  `http://127.0.0.1:43110/1HeLLo4uzjaLetFx6NH3PMwFP3qbRbTf3D`)。
+* ZeroNet 将会使用 BitTorrent 网络来寻找正在做种的节点并且从这些节点下载站点内容 (HTML, CSS, JS...)。
+* 每个访问过的网站也会被你共享。
 * Every site contains a list of all files used in the site in a SHA512 hash and a signature generated using the site owner private key.
 * If the site owner modifies the site, then he/she signs a new list and publishes it to the peers.
   After the peers have verified the files list integrity (using the
   signature), they download the modified files and publish the new content to
   other peers.
 
-##### [Slideshow about ZeroNet cryptography, content updates, multi-user sites &raquo;](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub?start=false&loop=false&delayms=3000)
+##### [有关 ZeroNet 加密，内容更新，多用户站点的幻灯片 &raquo;](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub?start=false&loop=false&delayms=3000)
 
 
-# Screenshots
+# 截图
 
 ![Screenshot](./img/zerohello.png)
 
 ![ZeroTalk](./img/zerotalk.png)
 
-##### [More screenshots &raquo;](/using_zeronet/sample_sites/)
+##### [更多截图 &raquo;](/using_zeronet/sample_sites/)
 
-# Current limitations
+# 目前的不足
 
-* No torrent-like, file splitting for big file support
-* File transactions are not compressed ~~or encrypted yet~~ (TLS encryption added)
-* No private sites
+* 没有类似于 Torrent 的文件拆分来支持大文件
+* 传输文件时没有压缩~~和加密~~ (已添加 TLS 加密)
+* 不支持私有 (private) 站点
 
-# Help to keep this project alive
+# 帮助这个项目
 
 Bitcoin: 1QDhxQ6PraUZa21ET5fYUCPgdrwBomnFgX
 
 
-### Thank you!
+### 感谢您!
 
-* More info, help, changelog, zeronet sites: [http://www.reddit.com/r/zeronet/](http://www.reddit.com/r/zeronet/)
-* Come, chat with us: [#zeronet @ FreeNode](https://kiwiirc.com/client/irc.freenode.net/zeronet) or on [gitter](https://gitter.im/HelloZeroNet/ZeroNet)
+* 更多信息，帮助，更改记录, zeronet 站点: [http://www.reddit.com/r/zeronet/](http://www.reddit.com/r/zeronet/)
+* 与我们聊天: [#zeronet @ FreeNode](https://kiwiirc.com/client/irc.freenode.net/zeronet) 或者在 [gitter](https://gitter.im/HelloZeroNet/ZeroNet)
+* [这里](https://gitter.im/ZeroNet-zh/Lobby)是一个 gitter 上的中文聊天室
