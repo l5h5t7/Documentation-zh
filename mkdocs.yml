@@ -2,27 +2,27 @@ site_name: ZeroNet
 site_url: https://github.com/HelloZeroNet/ZeroNet
 site_description: Decentralized websites using Bitcoin crypto and the BitTorrent network
 
-repo_url: https://github.com/HelloZeroNet/ZeroNet
+repo_url: https://github.com/ysc3839/Documentation
 
 extra_css: [docs.css]
 #extra_javascript: [docs.js]
 
 
 pages:
-- Introduction: "index.md"
+- 介绍: "index.md"
 - Frequently asked questions: "faq.md"
-- Start using ZeroNet:
-  - "Installing": using_zeronet/installing.md
-  - "Sample sites": using_zeronet/sample_sites.md
-  - "Create new site": using_zeronet/create_new_site.md
-- "Site Development":
+- 开始使用 ZeroNet:
+  - "安装": using_zeronet/installing.md
+  - "示例站点": using_zeronet/sample_sites.md
+  - "创建新站点": using_zeronet/create_new_site.md
+- "站点开发":
   - "Getting Started": "site_development/getting_started.md"
   - "ZeroFrame API reference": "site_development/zeroframe_api_reference.md"
   - "Structure of content.json": "site_development/content_json.md"
   - "Structure of dbschema.json": "site_development/dbschema_json.md"
-- "Help ZeroNet development":
+- "帮助 ZeroNet 开发":
   - "Contributing to ZeroNet": "help_zeronet/contributing.md"
-  - "Network protocol": "help_zeronet/network_protocol.md"
-  - "Donation": "help_zeronet/donate.md"
+  - "网络协议": "help_zeronet/network_protocol.md"
+  - "捐赠": "help_zeronet/donate.md"
 
 theme_dir: readthedocs
