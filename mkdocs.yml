@@ -10,7 +10,7 @@ extra_css: [docs.css]
 
 pages:
 - 介绍: "index.md"
-- Frequently asked questions: "faq.md"
+- 常见问题: "faq.md"
 - 开始使用 ZeroNet:
   - "安装": using_zeronet/installing.md
   - "示例站点": using_zeronet/sample_sites.md
