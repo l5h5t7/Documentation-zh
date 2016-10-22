@@ -1,19 +1,19 @@
-# Frequently asked questions
+# 常见问题
 
 
-#### Do I need to have a port opened?
+#### 我是否需要开放端口?
 
-This is __optional__, you can browse and use ZeroNet sites without an open port.
-If you want to create a new site it's highly recommended to have an open port.
+这是 __可选的__, 你无须开放端口就可以浏览和使用 ZeroNet 站点. 
+如果你想创建新的站点那么强烈建议你开放端口. 
 
-At startup ZeroNet tries to open a port for you on your router using
-[UPnP](https://wikipedia.org/wiki/Universal_Plug_and_Play), if this fails you have to do it manually:
+在启动时 ZeroNet 会使用 [UPnP](https://zh.wikipedia.org/wiki/UPnP) 尝试在你的路由器上开放端口, 
+如果这失败了你需要手动操作:
 
-- Try access your router's web interface using [http://192.168.1.1](http://192.168.1.1)
-or [http://192.168.0.1](http://192.168.0.1)
-- Look for an "Enable UPnP support" or similar option then restart ZeroNet.
+- 尝试访问你路由器的Web界面 [http://192.168.1.1](http://192.168.1.1)
+或者 [http://192.168.0.1](http://192.168.0.1)
+- 寻找 "开启 UPnP 支持" 或相似的选项然后重启 ZeroNet.
 
-If it still doesn't work then try to find a 'port forwarding' section. This is different in every router. [Here is a tutorial on YouTube.](https://www.youtube.com/watch?v=aQXJ7sLSz14) The port to forward is 15441.
+如果还是不行则尝试寻找"端口转发". 这对每个路由器都是不同的. [这是一个 YouTube 上的教程.](https://www.youtube.com/watch?v=aQXJ7sLSz14) 要开放的端口是 15441.
 
 
 ---
@@ -29,20 +29,20 @@ ZeroNet is made to work with anonymity networks: you can easily hide your IP usi
 ---
 
 
-#### How to use ZeroNet in Tor browser?
+#### 如何在 Tor browser 中使用 ZeroNet?
 
-In Tor mode it's recommended to use ZeroNet in Tor Browser:
+在 Tor 模式下建议使用 Tor Browser 浏览 ZeroNet:
 
-- Start the Tor Browser
-- Go to address `about:preferences#advanced`
-- Click `Settings...`
-- Enter `127.0.0.1` to field **No proxy for**
+- 打开 Tor Browser
+- 转到地址 `about:preferences#advanced`
+- 点击 `设置...`
+- 在 **不使用代理** 输入 `127.0.0.1`
 
 
 ---
 
 
-#### How to use ZeroNet with Tor?
+#### 如何通过 Tor 使用 ZeroNet?
 
 If you want to hide your IP install the latest version of ZeroNet then click Tor > Enable Tor for every connection on ZeroHello.
 
@@ -57,7 +57,7 @@ edit your torrc configuration file by removing `#` from line `# ControlPort 9051
 ---
 
 
-#### How to make ZeroNet work with Tor under Linux?
+#### 如何在 Linux 下通过 Tor 使用 ZeroNet?
 
 Upgrade to latest version of Tor (we need 0.2.7.5+), follow [these](https://www.torproject.org/docs/debian.html.en) instructions eg. for Debian:
 
@@ -75,23 +75,23 @@ Edit config to enable control protocol:
  - Add permission yourself to read the auth cookie by `usermod -a -G debian-tor [yourlinuxuser]`<br>(if you are not on Debian check the file's user group by `ls -al /var/run/tor/control.authcookie`)
  - Logout/Login with your user to apply group changes
 
-> __Tip:__ You can verify if your Tor running correctly using `echo 'PROTOCOLINFO' | nc 127.0.0.1 9051`
+> __提示:__ You can verify if your Tor running correctly using `echo 'PROTOCOLINFO' | nc 127.0.0.1 9051`
 
-> __Tip:__ It's also possible to use without modifying torrc (or using older version of Tor clients) by running it `zeronet.py --tor disable --proxy 127.0.0.1:9050 --disable_udp`, but then you will loose ability to talk with other .onion addresses.
+> __提示:__ It's also possible to use without modifying torrc (or using older version of Tor clients) by running it `zeronet.py --tor disable --proxy 127.0.0.1:9050 --disable_udp`, but then you will loose ability to talk with other .onion addresses.
 
-
-
----
-
-#### Can I use the same username on multiple machine?
-
-Yes, you have to copy the `data/users.json` file.
 
 
 ---
 
+#### 我可以在多台机器上使用同一个用户吗?
 
-#### How can I register a .bit domain?
+可以, 你需要复制 `data/users.json`.
+
+
+---
+
+
+#### 如何注册一个 .bit 域名?
 
 You can register .bit domains using [Namecoin](https://namecoin.info/).
 Manage your domains using the client's GUI or by the [command line interface](http://www.christopherpoole.net/registering-a-bit-domain-with-namecoin.html).
@@ -112,13 +112,13 @@ After the registration is done you have to edit your domain's record by adding a
 "" means the top domain, any other that is a sub-domain.
 
 
-> __Tip:__ Other possibilities to register .bit domains: [domaincoin.net](https://domaincoin.net/), [peername.com](https://peername.com/), [dotbit.me](https://dotbit.me/)
+> __提示:__ Other possibilities to register .bit domains: [domaincoin.net](https://domaincoin.net/), [peername.com](https://peername.com/), [dotbit.me](https://dotbit.me/)
 
-> __Tip:__ You can verify your domain on [namecha.in](http://namecha.in/), for example: [zeroid.bit](http://namecha.in/name/d/zeroid)
+> __提示:__ You can verify your domain on [namecha.in](http://namecha.in/), for example: [zeroid.bit](http://namecha.in/name/d/zeroid)
 
-> __Tip:__ You should use only [lower-cased letters, numbers and - in your domains](http://wiki.namecoin.info/?title=Domain_Name_Specification_2.0#Valid_Domains).
+> __提示:__ You should use only [lower-cased letters, numbers and - in your domains](http://wiki.namecoin.info/?title=Domain_Name_Specification_2.0#Valid_Domains).
 
-> __Tip:__ To make ZeroHello to link your domain instead of your site's address, add a domain key to your content.json. ([Example](https://github.com/HelloZeroNet/ZeroBlog/blob/master/content.json#L6))
+> __提示:__ To make ZeroHello to link your domain instead of your site's address, add a domain key to your content.json. ([Example](https://github.com/HelloZeroNet/ZeroBlog/blob/master/content.json#L6))
 
 
 ---
@@ -128,7 +128,7 @@ After the registration is done you have to edit your domain's record by adding a
 
 Yes, it's a standard Bitcoin address. The private key is WIF formatted, so you can import it in most clients.
 
-> __Tip:__ It's not recommended to keep a high amount of money on your site's address, because you have to enter your private key every time you modify your site.
+> __提示:__ It's not recommended to keep a high amount of money on your site's address, because you have to enter your private key every time you modify your site.
 
 
 ---
@@ -148,9 +148,9 @@ Yes, you have to enable the UiPassword plugin by renaming the __plugins/disabled
 then start ZeroNet on the remote machine using <br>`zeronet.py --ui_ip "*" --ui_password anypassword`.
 This will bind the ZeroNet UI webserver to all interfaces, but to keep it secure you can only access it by entering the given password.
 
-> __Tip:__ You can also restrict the interface based on ip address by using `--ui_restrict ip1 ip2`.
+> __提示:__ You can also restrict the interface based on ip address by using `--ui_restrict ip1 ip2`.
 
-> __Tip:__ You can specify the password in config file by creating a `zeronet.conf` file and add `[global]`, `ui_password = anypassword` lines to it.
+> __提示:__ You can specify the password in config file by creating a `zeronet.conf` file and add `[global]`, `ui_password = anypassword` lines to it.
 
 
 ---
@@ -160,7 +160,7 @@ This will bind the ZeroNet UI webserver to all interfaces, but to keep it secure
 
 The sent/received bytes are displayed at ZeroNet's sidebar.<br>(open it by dragging the topright `0` button to left)
 
-> __Tip:__ Per connection statistics page: [http://127.0.0.1:43110/Stats](http://127.0.0.1:43110/Stats)
+> __提示:__ Per connection statistics page: [http://127.0.0.1:43110/Stats](http://127.0.0.1:43110/Stats)
 
 
 ---
@@ -174,7 +174,7 @@ Every content.json file is timestamped, the clients always accepts the newest on
 ---
 
 
-#### Does ZeroNet use Bitcoin's blockchain?
+#### ZeroNet 是否使用了比特币的区块链?
 
 No, ZeroNet only uses the cryptography of Bitcoin for site addresses and content signing/verification.
 The users identification is also based on Bitcoin's [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) format.
@@ -213,6 +213,6 @@ ZeroNet is built for dynamic, real-time updated websites, but you can serve any 
   the new content.json and __publishes it to the peers__. After the peers have verified the content.json
   integrity (using the signature), they __download the modified files__ and publish the new content to other peers.
 
-More info:
+更多信息:
  [Description of ZeroNet sample sites](/using_zeronet/sample_sites/),
  [Slides about how does ZeroNet work](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub)
