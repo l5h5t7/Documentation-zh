@@ -1,2 +1,2 @@
 Available at
-https://zeronet.readthedocs.org/
+http://127.0.0.1:43110/docs.ysc3839.bit/

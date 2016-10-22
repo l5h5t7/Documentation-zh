@@ -1,8 +1,8 @@
-site_name: ZeroNet
-site_url: https://github.com/HelloZeroNet/ZeroNet
+site_name: ZeroNet 中文文档
+site_url: http://127.0.0.1:43110/docs.ysc3839.bit/
 site_description: Decentralized websites using Bitcoin crypto and the BitTorrent network
 
-repo_url: https://github.com/ysc3839/Documentation
+repo_url: https://github.com/ysc3839/Documentation-zh
 
 extra_css: [docs.css]
 #extra_javascript: [docs.js]
