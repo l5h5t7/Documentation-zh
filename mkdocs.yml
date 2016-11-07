@@ -18,7 +18,7 @@ pages:
 - "站点开发":
   - "Getting Started": "site_development/getting_started.md"
   - "ZeroFrame API reference": "site_development/zeroframe_api_reference.md"
-  - "Structure of content.json": "site_development/content_json.md"
+  - "content.json文件的结构": "site_development/content_json.md"
   - "Structure of dbschema.json": "site_development/dbschema_json.md"
 - "帮助 ZeroNet 开发":
   - "Contributing to ZeroNet": "help_zeronet/contributing.md"
