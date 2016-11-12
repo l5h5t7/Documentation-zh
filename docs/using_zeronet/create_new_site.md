@@ -1,10 +1,10 @@
 # Create new ZeroNet site
 
 
-### 1. Create site structure
+### 1. 创建站点结构
 
-* Shut down ZeroNet if it is running
-* Browse to the folder where ZeroNet is installed and run:
+* 如果 ZeroNet 还在运行的话，关闭它
+* 定位到 ZeroNet 安装并运行的目录：
 
 ```bash
 $ zeronet.py siteCreate
@@ -17,15 +17,15 @@ $ zeronet.py
 ...
 ```
 
-- This will create the initial files for your site inside ```data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```.
+- 该操作将创建你的站点里的初始文件 ```data/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```.
 
 > __Note:__
-> Windows users using the bundle version must browse into the ZeroBundle/ZeroNet folder and run `"../Python/python.exe" zeronet.py siteCreate`
+> 使用 bundle 版本的 Windows 用户必须定位到 ZeroBundle/ZeroNet 然后运行 `"../Python/python.exe" zeronet.py siteCreate`
 
-### 2. Build/Modify site
+### 2. 构建/更改站点
 
-* Update the site files located in ```data/[your site address key]``` (eg: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2).
-* When your site is ready run:
+* 更新站点位于 ```data/[your site address key]``` (eg: 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2) 的文件。
+* 当你的站点已经准备好运行:
 
 ```bash
 $ zeronet.py siteSign 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
@@ -33,11 +33,11 @@ $ zeronet.py siteSign 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
 Private key (input hidden):
 ```
 
-* Enter the private key you got when you created the site. This will sign all files so peers can verify that the site owner is who made the changes.
+* 输入你在创建站点时获得的私钥。这将给所有的文件签名以让节点能验证是站点所有者进行的更改。
 
-### 3. Publish site changes
+### 3. 发布站点更改
 
-* In order to inform peers about the changes you made you need to run:
+* 为了通知节点你的更改你需要运行：
 
 ```bash
 $ zeronet.py sitePublish 13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2
@@ -47,8 +47,8 @@ Site:13DNDk..bhC2 Successfuly published to 3 peers
 - Serving files....
 ```
 
-* That's it! You've successfully signed and published your modifications.
-* Your site will be accessible from: ```http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2```
+* 完成了！你已经成功地签名并发布了你的更改。
+* 你的站点将可从 ```http://localhost:43110/13DNDkMUExRf9Xa9ogwPKqp7zyHFEqbhC2``` 被访问
 
 
-**Next steps:** [ZeroNet Developer Documentation](/site_development/getting_started/)
+**下一节:** [ZeroNet 开发者文档](/site_development/getting_started/)
