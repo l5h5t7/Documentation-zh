@@ -1,13 +1,13 @@
 <link rel=stylesheet href="../../bitcoinbar/bitcoinbar.css">
 
 
-# Help to keep ZeroNet development alive
+# 帮助保持 ZeroNet 开发的活跃性
 
 
-## ZeroNet: 2016 third quarter development
+## ZeroNet: 2016 第三季度开发
 <a href="bitcoin:1QDhxQ6PraUZa21ET5fYUCPgdrwBomnFgX?Label=ZeroNet+donation" class="bitcoinbar" data-address="1QDhxQ6PraUZa21ET5fYUCPgdrwBomnFgX" data-goal="9.0"></a>
 
-* General donation towards ZeroNet development
+* ZeroNet 开发的通用捐赠
 
 <div>or using PayPal: <b>hello@zeronet.io</b> or <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display: inline-block; vertical-align: -5px; margin-left: 5px">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -22,16 +22,16 @@
 ---
 
 
-## Bitmessage support
+## Bitmessage 支持
 
 <a href="bitcoin:1JxwXnjkv5M822aoJEVJawnS2uKnnT216Z?Label=ZeroNet+Bitmessage+donation" class="bitcoinbar" data-address="1JxwXnjkv5M822aoJEVJawnS2uKnnT216Z" data-goal="1.0"></a>
 
- * Send and receive Bitmessage messages using local client's XMLRPC API interface
+ * 使用本地客户端的 XMLRPC API 接口发送和接收 Bitmessage 消息
 
-Benefits:
+特性：
 
- * Send your permission request to site owner via bitmessage
- * Possible private messaging/commenting webui integration to sites
+ * 使用 bitmessage 向站点所有者发送权限请求
+ * 使私密消息/评论集成到站点成为可能
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/65)
 
@@ -40,13 +40,13 @@ Benefits:
 ---
 
 
-## <s>Namecoin domain support</s> (done in version 0.2.8)
+## <s>Namecoin 域名支持</s> (在版本 0.2.8 完成）
 
- * Use Namecoin domain names to access sites
+ * 使用 Namecoin 域名来访问站点
 
-Benefits:
+特性：
 
- * Easier to remember site addresses
+ * 更容易记忆的站点地址
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/31)
 
@@ -54,16 +54,16 @@ Benefits:
 ---
 
 
-## DHT support
+## DHT 支持
 
 <a href="bitcoin:122tqTo5jTsZfF4xFodhM54b5HUkeVQL4E?Label=ZeroNet+DHT+donation" class="bitcoinbar" data-address="122tqTo5jTsZfF4xFodhM54b5HUkeVQL4E" data-goal="3.0"></a>
 
- * Peer discovery using DHT
+ * 使用 DHT 的节点发现机制
 
-Benefits:
+特性：
 
- * Peer discovery no longer relies on torrent network
- * Ipv6 and Tor peer discovery
+ * 节电发现不再依赖 torrent 网络
+ * Ipv6 和 Tor 节点发现
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/57)
 
@@ -71,15 +71,15 @@ Benefits:
 ---
 
 
-## Private sites
+## 私密站点
 
 <a href="bitcoin:1Q3jV3bAZxKBdMtVjnzfpcsmtXDspjGMnG?Label=ZeroNet+Private+sites" class="bitcoinbar" data-address="1Q3jV3bAZxKBdMtVjnzfpcsmtXDspjGMnG" data-goal="2.0"></a>
 
- * Passworded or public key based peer auth to sites
+ * 密码或公钥验证的站点
 
-Benefits:
+特性：
 
- * Secure control over peers who has access to your site
+ * 谁有权限访问你的站点的节点的安全控制
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/62)
 
@@ -87,13 +87,13 @@ Benefits:
 ---
 
 
-## <s>Full Tor support</s> (done in version 0.3.5)
+## <s>完整的 Tor 支持</s> （在 0.3.5 版本完成）
 
- * Allow to seed sites and connect other peers using Tor network (Probably depends on DHT support)
+ * 允许使用 Tor 给站点做种并连接到其他节点 （或许依赖于 DHT 网络）
 
-Benefits:
+特性：
 
- * Hiding your IP when distributing new content or downloading site
+ * 当分发新内容或下载站点时隐藏你的 IP
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/60)
 
@@ -102,14 +102,14 @@ Benefits:
 ---
 
 
-## <s>Multiuser proxy support</s> (done in version 0.2.7)
+## <s>多用户代理支持</s> （在 0.2.7 版本完成）
 
- * User login/logout using bip32 master seed
+ * 用户使用 bip32 master seed 来登录/退出
 
-Benefits:
+特性：
 
- * Makes open ZeroNet proxies usable
- * Use local ZeroNet more than one user
+ * 使得 ZeroNet 开放代理可用
+ * 超过一个用户使用本地的 ZeroNet
 
 [Github issue](https://github.com/HelloZeroNet/ZeroNet/issues/58)
 
@@ -117,15 +117,15 @@ Benefits:
 ---
 
 
-## Where does the donation go?
+## 捐赠都去了哪里？
 
-The task's received donation goes directly to the developer(s) who successfully and properly integrates the feature (please add your plans and ideas to the issue before you start working on anything big).
+任务接收到的捐赠直接流向了成功和正确地集成了特性的开发者 （在开始任何大的工作前请添加你的计划和想法到 issue）。
 
 
 
-# Sponsors
+# 赞助商
 
-* Better OSX/Safari compatibility made possible by [BrowserStack.com](https://www.browserstack.com/)
+* 通过 [BrowserStack.com](https://www.browserstack.com/) ，更好的 OSX/Safari 兼容性成为可能
 
 
 <script src='../../bitcoinbar/bitcoinbar.js'></script>
