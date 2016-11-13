@@ -1,4 +1,4 @@
-# ZeroFrame API Reference
+# ZeroFrame API 参考
 
 
 
@@ -8,16 +8,16 @@ _These commands handled by wrapper frame and does not sent to UiServer using web
 
 
 #### wrapperConfirm _message, [button_caption]_
-Display a notification with confirm button
+显示一条带有确认按钮的通知
 
-Parameter              | Description
+参数              | 描述
                   ---  | ---
-**message**            | The message you want to display
-**button_caption** (optional) | Caption of the confirmation button (default: OK)
+**message**            | 你想要显示的消息
+**button_caption** （可选） | 确认按钮的标题 (默认：OK)
 
 **Return**: True if clicked on button
 
-**Example:**
+**例子：**
 ```coffeescript
 # Delete site
 siteDelete: (address) ->
@@ -39,7 +39,7 @@ siteDelete: (address) ->
 #### wrapperGetLocalStorage
 **Return**: Browser's local store for the site
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "wrapperGetLocalStorage", [], (res) =>
 	res ?= {}
@@ -51,10 +51,10 @@ siteDelete: (address) ->
 
 #### wrapperPermissionAdd _permission_
 
-Request new permission for site
+为站点请求新权限
 
 
-Parameter        | Description
+参数        | 描述
              --- | ---
 **permission**   | Name of permission (eg. Merger:ZeroMe)
 
@@ -64,13 +64,13 @@ Parameter        | Description
 #### wrapperSetLocalStorage _data_
 Set browser's local store data stored for the site
 
-Parameter              | Description
+参数              | 描述
                   ---  | ---
 **data**               | Any data structure you want to store for the site
 
 **Return**: None
 
-**Example:**
+**例子：**
 ```coffeescript
 Page.local_storage["topic.#{@topic_id}_#{@topic_user_id}.visited"] = Time.timestamp()
 Page.cmd "wrapperSetLocalStorage", Page.local_storage
@@ -81,17 +81,17 @@ Page.cmd "wrapperSetLocalStorage", Page.local_storage
 
 
 #### wrapperNotification _type, message, [timeout]_
-Display a notification
+显示一个通知
 
-Parameter              | Description
+参数              | 描述
                   ---  | ---
-**type**               | Possible values: info, error, done
-**message**            | The message you want to display
-**timeout** (optional) | Hide display after this interval (milliseconds)
+**type**               | 可能的值：info, error, done
+**message**            | 你想要显示的消息
+**timeout** （可选） | 在这个间隔后隐藏显示 （毫秒）
 
 **Return**: None
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "wrapperNotification", ["done", "Your registration has been sent!", 10000]
 ```
@@ -102,16 +102,16 @@ Parameter              | Description
 
 #### wrapperPrompt _message, [type]_
 
-Prompt text input from user
+确认用户的文本输入
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
-**message**         | The message you want to display
-**type** (optional) | Type of the input (default: text)
+**message**         | 你想要显示的消息
+**type** （可选） | 输入的类型 (默认：text)
 
 **Return**: Text entered to input
 
-**Example:**
+**例子：**
 ```coffeescript
 # Prompt the private key
 @cmd "wrapperPrompt", ["Enter your private key:", "password"], (privatekey) =>
@@ -128,13 +128,13 @@ Parameter           | Description
 Set sites's viewport meta tag content (required for mobile sites)
 
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
 **viewport**        | The viewport meta tag content
 
 **Return**: None
 
-**Example:**
+**例子：**
 ```coffeescript
 # Prompt the private key
 @cmd "wrapperSetViewport", "width=device-width, initial-scale=1.0"
@@ -154,16 +154,16 @@ The UiServer will do all the 'backend' work (eg: querying the DB, accessing file
 #### certAdd _domain, auth_type, auth_user_name, cert_
 Add a new certificate to current user.
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**domain**           | Certificate issuer domain
-**auth_type**        | Auth type used on registration
-**auth_user_name**   | User name used on registration
+**domain**           | 证书颁发者域名
+**auth_type**        | 注册使用的验证方式
+**auth_user_name**   | 注册使用的用户名
 **cert**             | The cert itself: `auth_address#auth_type/auth_user_name` string signed by the cert site owner
 
 **Return**: "ok", "Not changed" or {"error": error_message}
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "certAdd", ["zeroid.bit", auth_type, user_name, cert_sign], (res) =>
 	$(".ui").removeClass("flipped")
@@ -176,15 +176,15 @@ Parameter            | Description
 
 
 #### certSelect _accepted_domains_
-Display certificate selector.
+显示证书选择器
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **accepted_domains** | List of domains that accepted by site as authorization provider
 
 **Return**: None
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "certSelect", {"accepted_domains": ["zeroid.bit"]}
 ```
@@ -195,9 +195,9 @@ Parameter            | Description
 
 #### channelJoin _channel_
 
-Request notifications about sites's events.
+请求站点的事件通知
 
-Parameter   | Description
+参数   | 描述
         --- | ---
 **channel** | Channel to join
 
@@ -239,15 +239,15 @@ route: (cmd, data) ->
 
 
 #### dbQuery _query_
-Run a query on the sql cache
+在 sql 缓存中执行一个查询
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**query**            | Sql query command
+**query**            | Sql 请求命令
 
-**Return**: <list> Result of the query
+**Return**: <list> 请求的结果
 
-**Example:**
+**例子：**
 ```coffeescript
 @log "Updating user info...", @my_address
 Page.cmd "dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT JOIN json USING(path) WHERE path='#{@my_address}/data.json'"], (res) =>
@@ -267,17 +267,17 @@ Page.cmd "dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT
 ---
 
 #### fileGet _inner_path, [required]_
-Get file content
+获得文件内容
 
-Parameter        | Description
+参数        | 描述
              --- | ---
-**inner_path**   | The file you want to get
-**required** (optional) | Try and wait for the file if it's not exists. (default: True)
+**inner_path**   | 你想要获得的文件
+**required** （可选） | 如果不存在的话，尝试并等待文件。(默认：True)
 
 **Return**: <string> The content of the file
 
 
-**Example:**
+**例子：**
 ```coffeescript
 # Upvote a topic on ZeroTalk
 submitTopicVote: (e) =>
@@ -315,11 +315,11 @@ submitTopicVote: (e) =>
 
 
 #### fileDelete _inner_path_
-Get file content
+获得文件内容
 
-Parameter        | Description
+参数        | 描述
              --- | ---
-**inner_path**   | The file you want to delete
+**inner_path**   | 你想要删除的文件
 
 **Return**: "ok" on success else the error message
 
@@ -328,9 +328,9 @@ Parameter        | Description
 
 
 #### fileQuery _dir_inner_path, query_
-Simple json file query command
+简单的 json 文件请求命令
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **dir_inner_path**   | Pattern of queried files
 **query**            | Query command
@@ -343,7 +343,7 @@ Parameter            | Description
  - `["data/users/*/data.json", "comments.1@2"]`: Returns `user_data["comments"]["1@2"]` value from all user files
  - `["data/users/*/data.json", ""]`: Returns all data from users files
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "fileQuery", ["data/users/*/data.json", "topics"], (topics) =>
 	topics.sort (a, b) -> # Sort by date
@@ -359,7 +359,7 @@ Parameter            | Description
 #### fileRules _inner_path_
 Return the rules for the file.
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **inner_path**       | File inner path
 
@@ -378,7 +378,7 @@ Parameter            | Description
 }
 ```
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "fileRules", "data/users/1J3rJ8ecnwH2EPYa6MrgZttBNc61ACFiCj/content.json", (rules) =>
 	@log rules
@@ -390,17 +390,17 @@ Parameter            | Description
 
 #### fileWrite _inner_path, content_
 
-Write file content
+写入文件内容
 
 
-Parameter        | Description
+参数        | 描述
              --- | ---
 **inner_path**   | Inner path of the file you want to write
 **content**      | Content you want to write to file (base64 encoded)
 
 **Return**: "ok" on success else the error message
 
-**Example:**
+**例子：**
 ```coffeescript
 writeData: (cb=null) ->
 	# Encode to json, encode utf8
@@ -423,9 +423,9 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 
 #### serverInfo
 
-**Return:** <dict> All information about the server
+**Return:** <dict> 服务器上的所有信息
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "serverInfo", {}, (server_info) =>
 	@log "Server info:", server_info
@@ -434,14 +434,14 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 **Example return value:**
 ```json
 {
-	"debug": true, # Running in debug mode
-	"fileserver_ip": "*", # Fileserver binded to
-	"fileserver_port": 15441, # FileServer port
+	"debug": true, # 运行在调试模式
+	"fileserver_ip": "*", # 绑定的文件服务器
+	"fileserver_port": 15441, # 文件服务器的端口
 	"ip_external": true, # Active of passive mode
 	"platform": "win32", # Operating system
 	"ui_ip": "127.0.0.1", # UiServer binded to
 	"ui_port": 43110, # UiServer port (Web)
-	"version": "0.2.5" # Version
+	"version": "0.2.5" # 版本
 }
 ```
 
@@ -453,9 +453,9 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 
 #### siteInfo
 
-**Return**: <dict> All information about the site
+**Return**: <dict> 站点上的所有信息
 
-**Example:**
+**例子：**
 ```coffeescript
 @cmd "siteInfo", {}, (site_info) =>
 	@log "Site info:", site_info
@@ -484,7 +484,7 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 	"workers": 0, # Current concurent downloads
 	"content": { # Root content.json
 		"files": 12, # Number of file, detailed file info removed to reduce data transfer and parse time
-		"description": "This site",
+		"描述": "This site",
 		"title": "ZeroHello",
 		"signs_required": 1,
 		"modified": 1425344149.365,
@@ -507,15 +507,15 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 #### sitePublish _[privatekey], [inner_path], [sign]_
 Publish a content.json of the site
 
-Parameter                 | Description
+参数                 | 描述
                       --- | ---
-**privatekey** (optional) | Private key used for signing (default: current user's privatekey)
-**inner_path** (optional) | Inner path of the content json you want to publish (default: content.json)
-**sign** (optional)       | If True then sign the content.json before publish (default: True)
+**privatekey** （可选） | Private key used for signing (默认：current user's privatekey)
+**inner_path** （可选） | Inner path of the content json you want to publish (默认：content.json)
+**sign** （可选）       | If True then sign the content.json before publish (默认：True)
 
 **Return**: "ok" on success else the error message
 
-**Example:**
+**例子：**
 ```coffeescript
 # Prompt the private key
 @cmd "wrapperPrompt", ["Enter your private key:", "password"], (privatekey) =>
@@ -533,17 +533,17 @@ Parameter                 | Description
 #### siteSign _[privatekey], [inner_path]_
 Sign a content.json of the site
 
-Parameter                 | Description
+参数                 | 描述
                       --- | ---
-**privatekey** (optional) | Private key used for signing (default: current user's privatekey)
-**inner_path** (optional) | Inner path of the content json you want to sign (default: content.json)
+**privatekey** （可选） | Private key used for signing (默认：current user's privatekey)
+**inner_path** （可选） | Inner path of the content json you want to sign (默认：content.json)
 
 **Return**: "ok" on success else the error message
 
 > __Note:__
 > Use "stored" as privatekey if its definied in users.json (eg. cloned sites)
 
-**Example:**
+**例子：**
 ```coffeescript
 if @site_info["privatekey"] # Private key stored in users.json
 	@cmd "siteSign", ["stored", "content.json"], (res) =>
@@ -559,13 +559,13 @@ if @site_info["privatekey"] # Private key stored in users.json
 
 Force check and download changed content from other peers (only necessary if user is in passive mode and using old version of Zeronet)
 
-Parameter     | Description
+参数     | 描述
           --- | ---
 **address**   | Address of site want to update (only current site allowed without site ADMIN permission)
 
 **Return:** None
 
-**Example:**
+**例子：**
 ```coffeescript
 # Manual site update for passive connections
 updateSite: =>
@@ -585,9 +585,9 @@ updateSite: =>
 
 Get user's site specific publickey
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**index** (optional) | Sub-publickey within site (default: 0)
+**index** （可选） | Sub-publickey within site （默认：0）
 
 
 **Return**: base64 encoded publickey
@@ -598,11 +598,11 @@ Parameter            | Description
 
 Encrypt a text using a publickey
 
-Parameter                      | Description
+参数                      | 描述
                            --- | ---
-**text**                       | Text to encrypt
-**publickey** (optional)       | User's publickey index (int) or base64 encoded publickey (default: 0)
-**return_aes_key** (optional)  | Get the AES key used in encryption (default: False)
+**text**                       | 想要加密的文本
+**publickey** （可选）       | User's publickey index (int) or base64 encoded publickey (默认：0)
+**return_aes_key** （可选）  | Get the AES key used in encryption (默认：False)
 
 
 **Return**: Encrypted text in base64 format or [Encrypted text in base64 format, AES key in base64 format]
@@ -613,10 +613,10 @@ Parameter                      | Description
 
 Try to decrypt list of texts
 
-Parameter                      | Description
+参数                      | 描述
                            --- | ---
 **params**                     | A text or list of encrypted texts
-**privatekey** (optional)      | User's privatekey index (int) or base64 encoded privatekey (default: 0)
+**privatekey** （可选）      | User's privatekey index (int) or base64 encoded privatekey (默认：0)
 
 
 **Return**: Decrypted text or list of decrypted texts (null for failed decodings)
@@ -627,11 +627,11 @@ Parameter                      | Description
 
 Encrypt a text using the key and the iv
 
-Parameter                      | Description
+参数                      | 描述
                            --- | ---
-**text**                       | A text encrypt using AES
-**key** (optional)             | Base64 encoded password (default: generate new)
-**iv** (optional)              | Base64 encoded iv (default: generate new)
+**text**                       | 一条 AES 加密的文本
+**key** （可选）             | Base64 编码的密码 (默认：generate new)
+**iv** （可选）              | Base64 encoded iv (默认：generate new)
 
 
 **Return**: [base64 encoded key, base64 encoded iv, base64 encoded encrypted text]
@@ -644,7 +644,7 @@ Parameter                      | Description
 
 Decrypt text using the IV and AES key
 
-Parameter                      | Description
+参数                      | 描述
                            --- | ---
 **iv**                         | IV in Base64 format
 **encrypted_text**             | Encrypted text in Base64 format
@@ -668,21 +668,21 @@ Set followed sql queries.
 
 The SQL query should result in rows with cols:
 
-Field          | Description
+Field          | 描述
            --- | ---
-**type**       | Type: post, article, comment, mention
-**date_added** | Event time
-**title**      | Event's first line to be displayed
-**body**       | Event's second and third line
-**url**        | Link to event's page
+**type**       | 类型：post, article, comment, mention
+**date_added** | 事件时间
+**title**      | 显示的事件的第一行
+**body**       | 事件的第二行和第三行
+**url**        | 链接到事件页面
 
-Parameter      | Description
+参数      | 描述
            --- | ---
-**feeds**      | Format: {"query name": [SQL query, [param1, param2, ...], ...}, parameters will be escaped, joined by `,` inserted in place of `:params` in the Sql query.
+**feeds**      | 格式：{"query name": [SQL query, [param1, param2, ...], ...}, 参数s will be escaped, joined by `,` inserted in place of `:params` in the Sql query.
 
 **Return**: ok
 
-**Example:**
+**例子：**
 ```coffeescript
 # Follow ZeroBlog posts
 query = "
@@ -726,9 +726,9 @@ Execute all followed sql query
 
 #### mergerSiteAdd _addresses_
 
-Start downloading new merger site(s)
+开始下载新的合并站点
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **addresses**         | Site address or list of site addresses
 
@@ -737,9 +737,9 @@ Parameter            | Description
 
 #### mergerSiteDelete _address_
 
-Stop seeding and delete a merged site
+停止做种并删除一个合并站点
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **address**           | Site address
 
@@ -748,16 +748,16 @@ Parameter            | Description
 
 #### mergerSiteList _[query_site_info]_
 
-Return merged sites.
+返回合并站点。
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **query_site_info**  | If True, then gives back detailed site info for merged sites
 
 ---
 
 
-# Admin commands
+# 管理命令
 _(requires ADMIN permission in data/sites.json)_
 
 
@@ -770,7 +770,7 @@ _(requires ADMIN permission in data/sites.json)_
 Create or update an entry in ZeroNet config file. (zeronet.conf by default)
 
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
 **key**              | Configuration entry name
 **value**            | Configuration entry new value
@@ -785,11 +785,11 @@ Parameter            | Description
 
 #### certSet _domain_
 
-Set the used certificate for current site.
+设置当前站点使用的证书
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**domain**           | Domain of the certificate issuer
+**domain**           | 证书颁发者的域名
 
 **Return**: None
 
@@ -799,11 +799,11 @@ Parameter            | Description
 
 #### channelJoinAllsite _channel_
 
-Request notifications about every site's events.
+请求每个站点的通知
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
-**channel**         | Channel to join (see channelJoin)
+**channel**         | 加入的通道 （参见 channelJoin）
 
 **Return**: None
 
@@ -815,9 +815,9 @@ Parameter           | Description
 
 #### serverPortcheck
 
-Start checking if port is opened
+开始检查端口是否打开
 
-**Return**: True (port opened) or False (port closed)
+**Return**: True （端口打开） 或 False （端口关闭）
 
 
 ---
@@ -825,7 +825,7 @@ Start checking if port is opened
 
 #### serverShutdown
 
-Stop running ZeroNet client.
+停止运行 ZeroNet 客户端
 
 **Return**: None
 
@@ -836,7 +836,7 @@ Stop running ZeroNet client.
 
 #### serverUpdate
 
-Re-download ZeroNet from github.
+从 github 上重新下载 ZeroNet
 
 **Return**: None
 
@@ -845,16 +845,16 @@ Re-download ZeroNet from github.
 
 
 #### siteClone _address_
-Copy site files into a new one.
+复制站点文件到一个新的站点
 
 Every file and directory will be skipped if it has a `-default` subfixed version and the subfixed version will be copied instead of it.
 
 
 Eg. If you have a `data` and a `data-default` directory: The `data` directory will not be copied and the `data-default` directory will be renamed to data.
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
-**address**         | Address of site want to clone
+**address**         | 想要克隆的站点地址
 
 **Return**: None, automatically redirects to new site on completion
 
@@ -871,11 +871,11 @@ Parameter           | Description
 
 
 #### sitePause _address_
-Pause site serving
+暂停站点服务
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
-**address**         | Address of site want to pause
+**address**         | 想要暂停的站点地址
 
 **Return**: None
 
@@ -884,11 +884,11 @@ Parameter           | Description
 
 
 #### siteResume _address_
-Resume site serving
+恢复站点服务
 
-Parameter           | Description
+参数           | 描述
                ---  | ---
-**address**         | Address of site want to resume
+**address**         | 想要恢复的站点地址
 
 **Return**: None
 
