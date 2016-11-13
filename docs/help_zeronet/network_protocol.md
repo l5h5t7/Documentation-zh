@@ -1,43 +1,43 @@
-# ZeroNet network protocol
+# ZeroNet 网络协议
 
- - Every message is encoded using [MessagePack](http://msgpack.org/)
- - Every request has 3 parameter:
-    * `cmd`: The request command
-    * `req_id`: The request's unique id (simple, incremented nonce), the client has to include this when reply to the command
-    * `params`: Parameters for the request
- - Example request: `{"cmd": "getFile", "req_id": 1, "params:" {"site": "1EU...", "inner_path": "content.json", "location": 0}}`
- - Example response: `{"cmd": "response", "to": 1, "body": "content.json content", "location": 1132, "site": 1132}`
- - Example error response: `{"cmd": "response", "to": 1, "error": "Unknown site"}`
+ - 每条消息时使用 [MessagePack](http://msgpack.org/) 编码的
+ - 每条消息有 3 个参数：
+    * `cmd`: 请求的命令
+    * `req_id`: 请求的唯一 ID （单调递增的随机数），当回复命令时客户端必须包含它
+    * `params`: 请求的参数
+ - 样例请求：`{"cmd": "getFile", "req_id": 1, "params:" {"site": "1EU...", "inner_path": "content.json", "location": 0}}`
+ - 样例响应：`{"cmd": "response", "to": 1, "body": "content.json content", "location": 1132, "site": 1132}`
+ - 样例错误响应：`{"cmd": "response", "to": 1, "error": "Unknown site"}`
 
-# Peer requests
+# 节点请求
 
 #### getFile _site_, _inner_path_, _location_
-Request a file from the client
+从客户端上请求一个文件
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**site**             | Site address (example: 1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr)
-**inner_path**       | File path relative to site directory
-**location**         | Request file from this byte (max 512 bytes got sent in a request, so you need multiple requests for larger files)
+**site**             | 站点地址 （例如：1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr）
+**inner_path**       | 相对于站点目录的文件路径
+**location**         | 从这个字节开始请求 (max 512 bytes got sent in a request, so you need multiple requests for larger files)
 
 **Return**:
 
-Return key           | Description
+返回值           | 描述
                  --- | ---
-**body**             | The requested file content
-**location**         | The location of the last byte sent
-**size**             | Total size of the file
+**body**             | 请求的文件内容
+**location**         | 发送的最后一个字节的位置
+**size**             | 文件的总大小
 
 
 ---
 
 
 #### ping
-Checks if the client is still alive
+检查是否客户端还在线
 
 **Return**:
 
-Return key           | Description
+返回值           | 描述
                  --- | ---
 **body**             | Pong
 
@@ -46,36 +46,36 @@ Return key           | Description
 
 
 #### pex _site_, _peers_, _need_
-Exchange peers with the client.
-Peers packed to 6 bytes (4byte IP using inet_ntoa + 2byte for port)
+交换客户端的节点。
+节点被打包成 6 个字节 （使用 inet_ntoa 的 4 字节 IP + 2 字节端口）
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**site**             | Site address (example: 1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr)
-**peers**            | List of peers that the requester has (packed)
-**need**             | Number of peers the requester want
+**site**             | 站点地址 （例如：1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr）
+**peers**            | 请求者已有的节点列表 （已打包的）
+**need**             | 请求者想要的节点数
 
 **Return**:
 
-Return key           | Description
+返回值           | 描述
                  --- | ---
-**peers**            | List of peer he has for the site (packed)
+**peers**            | 列出他有的站点的节点 （已打包的）
 
 
 ---
 
 #### update _site_, _inner_path_, _body_
-Update a site file.
+更新一个站点文件。
 
 
-Parameter            | Description
+参数            | 描述
                  --- | ---
-**site**             | Site address (example: 1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr)
-**inner_path**       | File path relative to site directory
-**body**             | Full content of the updated file
+**site**             | 站点地址 （例如：1EU1tbG9oC1A8jz2ouVwGZyQ5asrNsE4Vr）
+**inner_path**       | 相对于站点目录的文件路径
+**body**             | 要更新的文件的完整内容
 
 **Return**:
 
-Return key           | Description
+返回值           | 描述
                  --- | ---
-**ok**               | Thanks message on successful update
+**ok**               | 感谢消息成功更新
