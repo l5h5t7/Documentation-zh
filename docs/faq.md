@@ -19,11 +19,11 @@
 ---
 
 
-#### Is ZeroNet anonymous?
+#### ZeroNet 是匿名的吗？
 
-It's no more anonymous than BitTorrent, but privacy (the possibility to find out who is the owner of the comment/site) will increase as the network and the sites gains more peers.
+它没有比 Bittorrent 更多的匿名性，but privacy (the possibility to find out who is the owner of the comment/site) will increase as the network and the sites gains more peers.
 
-ZeroNet is made to work with anonymity networks: you can easily hide your IP using the Tor network.
+ZeroNet 可以在匿名网络下工作：你能简单地使用 Tor 网络隐藏你的 IP 。
 
 
 ---
@@ -49,9 +49,9 @@ If you want to hide your IP install the latest version of ZeroNet then click Tor
 On Windows Tor is bundled with ZeroNet for other OS [follow Tor install instructions](https://www.torproject.org/docs/installguide.html),
 edit your torrc configuration file by removing `#` from line `# ControlPort 9051` then restart your Tor service and ZeroNet.
 
-> __Tip:__ You can verify your IP address using ZeroNet's [Stats](http://127.0.0.1:43110/Stats) page.
+> __提示：__ 你能使用 [Stats](http://127.0.0.1:43110/Stats) 页面来验证你的 IP 地址。
 
-> __Tip:__ If you get connection errors make sure you have the latest version of Tor installed. (0.2.7.5+ required)
+> __提示：__ 如果你连接错误，确信你已经安装了最新版本的 Tor 。(0.2.7.5+ required)
 
 
 ---
@@ -59,7 +59,7 @@ edit your torrc configuration file by removing `#` from line `# ControlPort 9051
 
 #### 如何在 Linux 下通过 Tor 使用 ZeroNet?
 
-Upgrade to latest version of Tor (we need 0.2.7.5+), follow [these](https://www.torproject.org/docs/debian.html.en) instructions eg. for Debian:
+更新最新版本的 Tor (我们需要 0.2.7.5+), follow [these](https://www.torproject.org/docs/debian.html.en) instructions eg. for Debian:
 
  - `echo 'deb http://deb.torproject.org/torproject.org jessie main'>> /etc/apt/sources.list.d/tor.list`
  - `gpg --keyserver keys.gnupg.net --recv 886DDD89`
@@ -67,7 +67,7 @@ Upgrade to latest version of Tor (we need 0.2.7.5+), follow [these](https://www.
  - `apt-get update`
  - `apt-get install tor`
 
-Edit config to enable control protocol:
+编辑配置来启用控制协议：
 
  - `mcedit /etc/tor/torrc`
  - Remove the `#` character from lines `ControlPort 9051` and `CookieAuthentication 1` (line ~57)
@@ -85,7 +85,7 @@ Edit config to enable control protocol:
 
 #### 我可以在多台机器上使用同一个用户吗?
 
-可以, 你需要复制 `data/users.json`.
+可以, 你需要复制 `data/users.json`。
 
 
 ---
@@ -109,7 +109,7 @@ After the registration is done you have to edit your domain's record by adding a
 ...
 }
 ```
-"" means the top domain, any other that is a sub-domain.
+"" 意味着顶级域名，任何其他的内容都是子域名。
 
 
 > __提示:__ Other possibilities to register .bit domains: [domaincoin.net](https://domaincoin.net/), [peername.com](https://peername.com/), [dotbit.me](https://dotbit.me/)
@@ -143,7 +143,7 @@ You are in full control of what you are hosting. If you find suspicious content 
 ---
 
 
-#### Is it possible to install ZeroNet to a remote machine?
+#### 有可能在远程机器上安装 ZeroNet 吗？
 Yes, you have to enable the UiPassword plugin by renaming the __plugins/disabled-UiPassword__ directory to __plugins/UiPassword__,
 then start ZeroNet on the remote machine using <br>`zeronet.py --ui_ip "*" --ui_password anypassword`.
 This will bind the ZeroNet UI webserver to all interfaces, but to keep it secure you can only access it by entering the given password.
@@ -176,7 +176,7 @@ Every content.json file is timestamped, the clients always accepts the newest on
 
 #### ZeroNet 是否使用了比特币的区块链?
 
-No, ZeroNet only uses the cryptography of Bitcoin for site addresses and content signing/verification.
+不，ZeroNet only uses the cryptography of Bitcoin for site addresses and content signing/verification.
 The users identification is also based on Bitcoin's [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) format.
 
 Namecoin's blockchain is being used for domain registrations.
@@ -185,26 +185,26 @@ Namecoin's blockchain is being used for domain registrations.
 ---
 
 
-#### Does ZeroNet only support HTML, CSS websites?
+#### ZeroNet 只支持 HTML, CSS 的网站吗？
 
-ZeroNet is built for dynamic, real-time updated websites, but you can serve any kind of files using it.
-(VCS repositories, your own thin-client, database, etc.)
+ZeroNet 是为动态构建的，实时更新的网站，但是你可以用它托管任何种类的文件。
+(VCS 版本库，你自己的瘦客户端，数据库等)
 
 
 ---
 
 
-#### How can I create a new ZeroNet site?
+#### 我如何才能创建一个新的 ZeroNet 站点？
 
-[Follow those instructions.](/using_zeronet/create_new_site/)
+[跟着这些介绍。](/using_zeronet/create_new_site/)
 
 ---
 
 
-#### How does it work?
+#### 它是怎么工作的？
 
-- When you want to open a new site it asks visitors IP addresses from BitTorrent network
-- First downloads a file named __content.json__, which holds all other filenames,
+- 当你打开一个站点它将从 Bittorrent 网络询问访客的 IP 地址
+- 首先下载名为 __content.json__ 的文件，which holds all other filenames,
   __hashes__ and the site owner's cryptographic signature
 - __Verifies__ the downloaded content.json file using the site's __address__ and the site owner's __signature__ from the file
 - __Downloads other file__ (html, css, js...) and verifies them using the SHA512 hash for content.json file
@@ -214,5 +214,5 @@ ZeroNet is built for dynamic, real-time updated websites, but you can serve any 
   integrity (using the signature), they __download the modified files__ and publish the new content to other peers.
 
 更多信息:
- [Description of ZeroNet sample sites](/using_zeronet/sample_sites/),
+ [描述 ZeroNet 的样站](/using_zeronet/sample_sites/),
  [Slides about how does ZeroNet work](https://docs.google.com/presentation/d/1_2qK1IuOKJ51pgBvllZ9Yu7Au2l551t3XBgyTSvilew/pub)
