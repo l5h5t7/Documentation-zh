@@ -4,7 +4,7 @@
 
 # Wrapper
 
-_These commands handled by wrapper frame and does not sent to UiServer using websocket_
+_这些命令由封装框架处理，不会使用 websocket 发送到 UiServer_
 
 
 #### wrapperConfirm _message, [button_caption]_
@@ -15,7 +15,7 @@ _These commands handled by wrapper frame and does not sent to UiServer using web
 **message**            | 你想要显示的消息
 **button_caption** （可选） | 确认按钮的标题 (默认：OK)
 
-**Return**: True if clicked on button
+**返回值**: True 如果你点了按钮
 
 **例子：**
 ```coffeescript
@@ -37,7 +37,7 @@ siteDelete: (address) ->
 
 
 #### wrapperGetLocalStorage
-**Return**: Browser's local store for the site
+**返回值**: Browser's local store for the site
 
 **例子：**
 ```coffeescript
@@ -56,7 +56,7 @@ siteDelete: (address) ->
 
 参数        | 描述
              --- | ---
-**permission**   | Name of permission (eg. Merger:ZeroMe)
+**permission**   | 权限名称 (eg. Merger:ZeroMe)
 
 ---
 
@@ -66,9 +66,9 @@ Set browser's local store data stored for the site
 
 参数              | 描述
                   ---  | ---
-**data**               | Any data structure you want to store for the site
+**data**               | 你想要存储在站点的任何结构
 
-**Return**: None
+**返回值**: None
 
 **例子：**
 ```coffeescript
@@ -89,7 +89,7 @@ Page.cmd "wrapperSetLocalStorage", Page.local_storage
 **message**            | 你想要显示的消息
 **timeout** （可选） | 在这个间隔后隐藏显示 （毫秒）
 
-**Return**: None
+**返回值**: None
 
 **例子：**
 ```coffeescript
@@ -109,7 +109,7 @@ Page.cmd "wrapperSetLocalStorage", Page.local_storage
 **message**         | 你想要显示的消息
 **type** （可选） | 输入的类型 (默认：text)
 
-**Return**: Text entered to input
+**返回值**: 输入的文本
 
 **例子：**
 ```coffeescript
@@ -125,14 +125,14 @@ Page.cmd "wrapperSetLocalStorage", Page.local_storage
 
 #### wrapperSetViewport _viewport_
 
-Set sites's viewport meta tag content (required for mobile sites)
+设置站点的 viewport 元标记内容 （移动站点需要）
 
 
 参数           | 描述
                ---  | ---
-**viewport**        | The viewport meta tag content
+**viewport**        | viewport 元标记内容
 
-**Return**: None
+**返回值**: None
 
 **例子：**
 ```coffeescript
@@ -161,7 +161,7 @@ Add a new certificate to current user.
 **auth_user_name**   | 注册使用的用户名
 **cert**             | The cert itself: `auth_address#auth_type/auth_user_name` string signed by the cert site owner
 
-**Return**: "ok", "Not changed" or {"error": error_message}
+**返回值**: "ok", "Not changed" or {"error": error_message}
 
 **例子：**
 ```coffeescript
@@ -182,7 +182,7 @@ Add a new certificate to current user.
                  --- | ---
 **accepted_domains** | List of domains that accepted by site as authorization provider
 
-**Return**: None
+**返回值**: None
 
 **例子：**
 ```coffeescript
@@ -201,7 +201,7 @@ Add a new certificate to current user.
         --- | ---
 **channel** | Channel to join
 
-**Return**: None
+**返回值**: None
 
 **Channels**:
 
@@ -245,7 +245,7 @@ route: (cmd, data) ->
                  --- | ---
 **query**            | Sql 请求命令
 
-**Return**: <list> 请求的结果
+**返回值**: <list> 请求的结果
 
 **例子：**
 ```coffeescript
@@ -274,7 +274,7 @@ Page.cmd "dbQuery", ["SELECT user.*, json.json_id AS data_json_id FROM user LEFT
 **inner_path**   | 你想要获得的文件
 **required** （可选） | 如果不存在的话，尝试并等待文件。(默认：True)
 
-**Return**: <string> The content of the file
+**返回值**: <string> 文件的内容
 
 
 **例子：**
@@ -321,7 +321,7 @@ submitTopicVote: (e) =>
              --- | ---
 **inner_path**   | 你想要删除的文件
 
-**Return**: "ok" on success else the error message
+**返回值**: 成功时返回 "ok" ，否则返回错误信息
 
 
 ---
@@ -332,10 +332,10 @@ submitTopicVote: (e) =>
 
 参数            | 描述
                  --- | ---
-**dir_inner_path**   | Pattern of queried files
-**query**            | Query command
+**dir_inner_path**   | 请求文件的模式
+**query**            | 请求命令
 
-**Return**: <list> Matched content
+**返回值**: <list> 匹配的内容
 
 **Query examples:**
 
@@ -357,13 +357,13 @@ submitTopicVote: (e) =>
 
 
 #### fileRules _inner_path_
-Return the rules for the file.
+返回文件的规则。
 
 参数            | 描述
                  --- | ---
-**inner_path**       | File inner path
+**inner_path**       | 文件内部路径
 
-**Return**: <list> Matched content
+**返回值**: <list> 匹配的内容
 
 **Example result:**
 
@@ -395,10 +395,10 @@ Return the rules for the file.
 
 参数        | 描述
              --- | ---
-**inner_path**   | Inner path of the file you want to write
-**content**      | Content you want to write to file (base64 encoded)
+**inner_path**   | 你想要写入的文件的内部路径
+**content**      | 你想要写入的文件内容 （base64 编码）
 
-**Return**: "ok" on success else the error message
+**返回值**: 成功时返回 "ok" ，否则返回错误信息
 
 **例子：**
 ```coffeescript
@@ -453,7 +453,7 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 
 #### siteInfo
 
-**Return**: <dict> 站点上的所有信息
+**返回值**: <dict> 站点上的所有信息
 
 **例子：**
 ```coffeescript
@@ -461,7 +461,7 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 	@log "Site info:", site_info
 ```
 
-**Example return value:**
+**实例返回值：**
 ```json
 {
 	"tasks": 0, # Number of files currently under download
@@ -505,15 +505,15 @@ _Note:_ to write files that not in content.json yet, you must have `"own": true`
 
 
 #### sitePublish _[privatekey], [inner_path], [sign]_
-Publish a content.json of the site
+发布站点的 content.json
 
 参数                 | 描述
                       --- | ---
-**privatekey** （可选） | Private key used for signing (默认：current user's privatekey)
-**inner_path** （可选） | Inner path of the content json you want to publish (默认：content.json)
-**sign** （可选）       | If True then sign the content.json before publish (默认：True)
+**privatekey** （可选） | 用于签名的私钥 （默认：当前的用户私钥）
+**inner_path** （可选） | 你想要发布的内容 json 的内部路径 （默认：content.json）
+**sign** （可选）       | 如果填 True 在发布前给 content.json 签名 （默认：True）
 
-**Return**: "ok" on success else the error message
+**返回值**: 成功时返回 "ok" ，否则返回错误信息
 
 **例子：**
 ```coffeescript
@@ -531,14 +531,14 @@ Publish a content.json of the site
 
 
 #### siteSign _[privatekey], [inner_path]_
-Sign a content.json of the site
+签名站点的 content.json
 
 参数                 | 描述
                       --- | ---
-**privatekey** （可选） | Private key used for signing (默认：current user's privatekey)
-**inner_path** （可选） | Inner path of the content json you want to sign (默认：content.json)
+**privatekey** （可选） | 用于签名的私钥 (默认：current user's privatekey)
+**inner_path** （可选） | 你想要发布的内容 json 的内部路径 （默认：content.json）
 
-**Return**: "ok" on success else the error message
+**返回值**: 成功时返回 "ok" ，否则返回错误信息
 
 > __Note:__
 > Use "stored" as privatekey if its definied in users.json (eg. cloned sites)
@@ -557,13 +557,13 @@ if @site_info["privatekey"] # Private key stored in users.json
 
 #### siteUpdate _address_
 
-Force check and download changed content from other peers (only necessary if user is in passive mode and using old version of Zeronet)
+从其他节点强制检查和下载更改的内容 （只有用户在被动模式和使用老版本的 Zeronet 才必要）
 
 参数     | 描述
           --- | ---
-**address**   | Address of site want to update (only current site allowed without site ADMIN permission)
+**address**   | 想要更新的站点地址 （没有站点的 ADMIN 权限只有当前的站点被允许）
 
-**Return:** None
+**返回值** 没有
 
 **例子：**
 ```coffeescript
@@ -583,58 +583,58 @@ updateSite: =>
 
 #### userPublickey _[index]_
 
-Get user's site specific publickey
+获取用户在网站特定的公钥
 
 参数            | 描述
                  --- | ---
-**index** （可选） | Sub-publickey within site （默认：0）
+**index** （可选） | 站点的子公钥 （默认：0）
 
 
-**Return**: base64 encoded publickey
+**返回值**: base64 编码的公钥
 
 ---
 
 #### eciesEncrypt _text, [publickey], [return_aes_key]_
 
-Encrypt a text using a publickey
+用公钥加密一段文本
 
 参数                      | 描述
                            --- | ---
 **text**                       | 想要加密的文本
-**publickey** （可选）       | User's publickey index (int) or base64 encoded publickey (默认：0)
-**return_aes_key** （可选）  | Get the AES key used in encryption (默认：False)
+**publickey** （可选）       | 用户的私钥索引 (int) 或 base64 编码的私钥 （默认：0）
+**return_aes_key** （可选）  | 获取用于加密的 AES 密钥 （默认：False）
 
 
-**Return**: Encrypted text in base64 format or [Encrypted text in base64 format, AES key in base64 format]
+**返回值**: base64 格式的加密后的文本或 [base64 格式的加密后的文本, base64 格式的 AES 密钥]
 
 ---
 
 #### eciesDecrypt _params, [privatekey]_
 
-Try to decrypt list of texts
+尝试解密文本列表
 
 参数                      | 描述
                            --- | ---
-**params**                     | A text or list of encrypted texts
-**privatekey** （可选）      | User's privatekey index (int) or base64 encoded privatekey (默认：0)
+**params**                     | 文本或加密的文本列表
+**privatekey** （可选）      | 用户的私钥索引 (int) 或 base64 编码的私钥 （默认：0）
 
 
-**Return**: Decrypted text or list of decrypted texts (null for failed decodings)
+**返回值**: 解密的文本或解密的文本列表 （解密失败时返回 null）
 
 ---
 
 #### aesEncrypt _text, [key], [iv]_
 
-Encrypt a text using the key and the iv
+使用指定的 key 和 iv 加密文本
 
 参数                      | 描述
                            --- | ---
 **text**                       | 一条 AES 加密的文本
 **key** （可选）             | Base64 编码的密码 (默认：generate new)
-**iv** （可选）              | Base64 encoded iv (默认：generate new)
+**iv** （可选）              | Base64 编码的 iv (默认：generate new)
 
 
-**Return**: [base64 encoded key, base64 encoded iv, base64 encoded encrypted text]
+**返回值**: [base64 编码的密钥, base64 编码的 iv, base64 编码的加密文本]
 
 
 ---
@@ -646,14 +646,14 @@ Decrypt text using the IV and AES key
 
 参数                      | 描述
                            --- | ---
-**iv**                         | IV in Base64 format
-**encrypted_text**             | Encrypted text in Base64 format
-**encrypted_texts**            | List of [base64 encoded iv, base64 encoded encrypted text] pairs
-**key**                        | Base64 encoded password for the text
-**keys**                       | Keys for decoding (tries every one for every pairs)
+**iv**                         | Base64 格式编码的 IV
+**encrypted_text**             | base64 编码的加密文本
+**encrypted_texts**            | [base64 编码的 iv, base64 编码的加密文本] 列表对
+**key**                        | 用于文本加密的 Base64 编码的密码
+**keys**                       | 用于解密的密钥 (tries every one for every pairs)
 
 
-**Return**: Decoded text or list of decoded texts
+**返回值**: Decoded text or list of decoded texts
 
 
 ---
@@ -664,9 +664,9 @@ Decrypt text using the IV and AES key
 
 #### feedFollow _feeds_
 
-Set followed sql queries.
+设置跟随的 sql 请求。
 
-The SQL query should result in rows with cols:
+SQL 请求应该返回列与行的结果：
 
 Field          | 描述
            --- | ---
@@ -680,7 +680,7 @@ Field          | 描述
            --- | ---
 **feeds**      | 格式：{"query name": [SQL query, [param1, param2, ...], ...}, 参数s will be escaped, joined by `,` inserted in place of `:params` in the Sql query.
 
-**Return**: ok
+**返回值**: ok
 
 **例子：**
 ```coffeescript
@@ -703,20 +703,20 @@ Page.cmd feedFollow [{"Posts": [query, params]}]
 
 #### feedListFollow
 
-Return of current followed feeds
+返回当前跟随的订阅
 
 
-**Return**: The currently followed feeds in the same format as in the feedFollow commands
+**返回值**: 与 feedFollow 命令相同格式的当前跟随的订阅
 
 
 ---
 
 #### feedQuery
 
-Execute all followed sql query
+执行所有跟随的 sql 请求
 
 
-**Return**: The result of the followed Sql queries
+**返回值**: 跟随的 Sql 请求的结果
 
 
 ---
@@ -730,7 +730,7 @@ Execute all followed sql query
 
 参数            | 描述
                  --- | ---
-**addresses**         | Site address or list of site addresses
+**addresses**         | 站点地址或站点地址列表
 
 
 ---
@@ -741,7 +741,7 @@ Execute all followed sql query
 
 参数            | 描述
                  --- | ---
-**address**           | Site address
+**address**           | 站点地址
 
 
 ---
@@ -752,7 +752,7 @@ Execute all followed sql query
 
 参数            | 描述
                  --- | ---
-**query_site_info**  | If True, then gives back detailed site info for merged sites
+**query_site_info**  | 如果设为 True , 返回合并站点的详细站点信息
 
 ---
 
@@ -767,16 +767,16 @@ _(requires ADMIN permission in data/sites.json)_
 
 #### configSet _key, value_
 
-Create or update an entry in ZeroNet config file. (zeronet.conf by default)
+在 ZeroNet 配置文件中创建或更新一个条目。 (zeronet.conf by default)
 
 
 参数            | 描述
                  --- | ---
-**key**              | Configuration entry name
-**value**            | Configuration entry new value
+**key**              | 配置条目名
+**value**            | 配置条目新的值
 
 
-**Return**: ok
+**返回值**: ok
 
 
 ---
@@ -791,7 +791,7 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
                  --- | ---
 **domain**           | 证书颁发者的域名
 
-**Return**: None
+**返回值**: None
 
 
 ---
@@ -805,7 +805,7 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
                ---  | ---
 **channel**         | 加入的通道 （参见 channelJoin）
 
-**Return**: None
+**返回值**: None
 
 
 
@@ -817,7 +817,7 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
 
 开始检查端口是否打开
 
-**Return**: True （端口打开） 或 False （端口关闭）
+**返回值**: True （端口打开） 或 False （端口关闭）
 
 
 ---
@@ -827,7 +827,7 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
 
 停止运行 ZeroNet 客户端
 
-**Return**: None
+**返回值**: None
 
 
 
@@ -838,7 +838,7 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
 
 从 github 上重新下载 ZeroNet
 
-**Return**: None
+**返回值**: None
 
 
 ---
@@ -847,16 +847,16 @@ Create or update an entry in ZeroNet config file. (zeronet.conf by default)
 #### siteClone _address_
 复制站点文件到一个新的站点
 
-Every file and directory will be skipped if it has a `-default` subfixed version and the subfixed version will be copied instead of it.
+如果文件和目录有带 `-default` 后缀的版本，那些文件会被跳过，带后缀的版本会替代它被复制。
 
 
-Eg. If you have a `data` and a `data-default` directory: The `data` directory will not be copied and the `data-default` directory will be renamed to data.
+例如，如果你有一个 `data` 和一个 `data-default` 目录：`data`  目录将不会被复制，`data-default` 将被重命名成 `data` 。
 
 参数           | 描述
                ---  | ---
 **address**         | 想要克隆的站点地址
 
-**Return**: None, automatically redirects to new site on completion
+**返回值**: 没有，自动重定向到完成的新站点中
 
 
 ---
@@ -864,7 +864,7 @@ Eg. If you have a `data` and a `data-default` directory: The `data` directory wi
 
 #### siteList
 
-**Return**: <list> SiteInfo list of all downloaded sites
+**返回值**: <list> 所有已下载的站点信息列表
 
 
 ---
@@ -877,8 +877,7 @@ Eg. If you have a `data` and a `data-default` directory: The `data` directory wi
                ---  | ---
 **address**         | 想要暂停的站点地址
 
-**Return**: None
-
+**返回值**: 没有
 
 ---
 
@@ -890,6 +889,6 @@ Eg. If you have a `data` and a `data-default` directory: The `data` directory wi
                ---  | ---
 **address**         | 想要恢复的站点地址
 
-**Return**: None
+**返回值**: 没有
 
 
