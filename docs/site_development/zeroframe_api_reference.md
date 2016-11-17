@@ -754,7 +754,139 @@ Page.cmd feedFollow [{"Posts": [query, params]}]
                  --- | ---
 **query_site_info**  | 如果设为 True , 返回合并站点的详细站点信息
 
+
 ---
+
+
+
+# 插件：OptionalManager
+
+#### optionalFileList _[address]_, _[orderby]_, _[limit]_
+
+返回可选文件列表
+
+参数            | 描述
+                 --- | ---
+**address**          | 你想要列出可选文件的站点地址 （默认：当前站点）
+**orderby**          | 返回可选文件的顺序 （默认：time_downloaded DESC）
+**limit**            | 返回可选文件的最大数量 （默认：10）
+
+**Return**: Database row of optional files: file_id, site_id, inner_path, hash_id, size, peer, uploaded, is_downloaded, is_pinned, time_added, time_downlaoded, time_accessed
+
+---
+
+#### optionalFileInfo _inner_path_
+
+从数据库请求可选文件
+
+参数            | 描述
+                 --- | ---
+**inner_path**       | 文件的路径
+
+**Return**: Database row of optional file: file_id, site_id, inner_path, hash_id, size, peer, uploaded, is_downloaded, is_pinned, time_added, time_downlaoded, time_accessed
+
+---
+
+#### optionalFilePin _inner_path_, _[address]_
+
+固定 （从自动可选文件清理中排除） 已下载的文件
+
+参数            | 描述
+                 --- | ---
+**inner_path**       | 文件的路径
+**address**          | 文件的地址 （默认：当前站点）
+
+---
+
+#### optionalFileUnpin _inner_path_, _[address]_
+
+解除固定 （包含入自动可选文件清理） 已下载的文件
+
+参数            | 描述
+                 --- | ---
+**inner_path**       | 文件的路径
+**address**          | 文件的地址 （默认：当前站点）
+
+---
+
+#### optionalFileDelete _inner_path_, _[address]_
+
+请求一个已下载的可选文件
+
+参数            | 描述
+                 --- | ---
+**inner_path**       | 文件的路径
+**address**          | 文件的地址 （默认：当前站点）
+
+---
+
+#### optionalLimitStats
+
+返回当前可选文件的已使用空间
+
+**Return**: 限制、已使用和可用空间统计
+
+---
+
+
+#### actionOptionalLimitSet _limit_
+
+设置可选文件限制
+
+参数            | 描述
+                 --- | ---
+**limit**            | 用 gb 或百分比表示的最大可以被可选文件使用的空间
+
+---
+
+#### actionOptionalHelpList _[address]_
+
+列出可选文件的自动下载目录
+
+参数            | 描述
+                 --- | ---
+**address**          | 你想要列出帮助做种目录的站点地址 （默认：当前站点）
+
+**Return**: 自动下载目录和描述的 Dict
+
+---
+
+
+#### actionOptionalHelp directory, title, _[address]_
+
+添加目录到自动下载列表
+
+参数            | 描述
+                 --- | ---
+**directory**        | 你想要添加到自动下载列表的目录
+**title**            | 条目的标题 （在 ZeroHello 显示）
+**address**          | 你想要添加自动下载目录的站点地址 （默认：当前站点）
+
+---
+
+#### actionOptionalHelpRemove directory, _[address]_
+
+移除一个自动下载条目
+
+参数            | 描述
+                 --- | ---
+**directory**        | 你想要从自动下载列表移除的目录
+**address**          | 受影响的站点地址 （默认：当前站点）
+
+---
+
+#### actionOptionalHelpAll value, _[address]_
+
+帮助下在该站点的每个新上传的可选文件
+
+参数            | 描述
+                 --- | ---
+**value**            | 启用或禁用自动下载
+**address**          | 受影响的站点地址 （默认：当前站点）
+
+
+---
+
 
 
 # 管理命令
