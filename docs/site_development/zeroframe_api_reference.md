@@ -37,7 +37,7 @@ siteDelete: (address) ->
 
 
 #### wrapperGetLocalStorage
-**返回值**: Browser's local store for the site
+**返回值**: 浏览器对站点的本地存储
 
 **例子：**
 ```coffeescript
@@ -62,7 +62,7 @@ siteDelete: (address) ->
 
 
 #### wrapperSetLocalStorage _data_
-Set browser's local store data stored for the site
+设置浏览器对站点的本地存储
 
 参数              | 描述
                   ---  | ---
@@ -152,7 +152,7 @@ The UiServer will do all the 'backend' work (eg: querying the DB, accessing file
 
 
 #### certAdd _domain, auth_type, auth_user_name, cert_
-Add a new certificate to current user.
+为当前用户添加一个新证书
 
 参数            | 描述
                  --- | ---
@@ -199,7 +199,7 @@ Add a new certificate to current user.
 
 参数   | 描述
         --- | ---
-**channel** | Channel to join
+**channel** | 加入的通道
 
 **返回值**: None
 
@@ -315,7 +315,7 @@ submitTopicVote: (e) =>
 
 
 #### fileDelete _inner_path_
-获得文件内容
+删除一个文件
 
 参数        | 描述
              --- | ---
@@ -578,7 +578,7 @@ updateSite: =>
 ---
 
 
-# Plugin: CryptMessage
+# 插件：CryptMessage
 
 
 #### userPublickey _[index]_
@@ -642,7 +642,7 @@ updateSite: =>
 #### aesDecrypt _iv, encrypted_text, key_
 #### aesDecrypt _encrypted_texts, keys_
 
-Decrypt text using the IV and AES key
+使用指定的 key 和 iv 解密文本
 
 参数                      | 描述
                            --- | ---
@@ -664,7 +664,7 @@ Decrypt text using the IV and AES key
 
 #### feedFollow _feeds_
 
-设置跟随的 sql 请求。
+设置订阅的 sql 请求。
 
 SQL 请求应该返回列与行的结果：
 
@@ -703,20 +703,20 @@ Page.cmd feedFollow [{"Posts": [query, params]}]
 
 #### feedListFollow
 
-返回当前跟随的订阅
+返回当前订阅的消息来源
 
 
-**返回值**: 与 feedFollow 命令相同格式的当前跟随的订阅
+**返回值**: 与 feedFollow 命令相同格式的订阅的消息来源
 
 
 ---
 
 #### feedQuery
 
-执行所有跟随的 sql 请求
+执行所有消息来源的 sql 请求
 
 
-**返回值**: 跟随的 Sql 请求的结果
+**返回值**: 消息来源的 Sql 请求的结果
 
 
 ---
