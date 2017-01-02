@@ -1,44 +1,43 @@
-# Structure of dbschema.json
+# dbschema.json 的结构
 
-[Example dbschema.json file](https://github.com/HelloZeroNet/ZeroTalk/blob/master/dbschema.json)
+[dbschema.json 文件的样例](https://github.com/HelloZeroNet/ZeroTalk/blob/master/dbschema.json)
 
-The code below will do the following:
+下面的代码将跟随这些事件而运行：
 
- - If an updated data/users/*/data.json file is received (eg.: a user posted something):
-   - Every row in `data["topics"]` is loaded to the `topic` table
-   - Every key in `data["comment_votes"]` is loaded to the `comment_vote` table as `comment_hash` col and the values stored in same line as `vote`
- - If an updated data/users/content.json file is received (eg.: new user created):
+ - 如果收到了更新的 data/users/*/data.json 文件 （例如：一个用户发了一个帖）：
+   - 在 `data["topics"]` 中的每行被加载到 `topic` 表
+   - 在 `data["comment_votes"]` 中的每个键被加载到 `comment_vote` 表作为 `comment_hash` 列并且值被存储到 `vote` 的相同行
+ - 如果收到了更新的 data/users/content.json 文件 （例如：创建了新用户）：
    - The `"user_id", "user_name", "max_size", "added"` key in value of `content["include"]` is loaded into the `user` table and the key is stored as `path`
 
 ```json
 
 {
-  "db_name": "ZeroTalk", # Database name (only used for debugging)
-  "db_file": "data/users/zerotalk.db", # Database file relative to site's directory
-  "version": 2, # 1 = Json table has path column that includes directory and filename
-                # 2 = Json table has seperate directory and file_name column
-                # 3 = Same as version 2, but also has site column (for merger sites)
-  "maps": { # Json to database mappings
-    ".*/data.json": { # Regex pattern of file relative to db_file
-      "to_table": [ # Load values to table
+  "db_name": "ZeroTalk", # 数据库名 （仅用于调试）
+  "db_file": "data/users/zerotalk.db", # 相对于站点目录的数据库文件路径
+  "version": 2, # 1 = JSON 表有包括目录和文件名的 path 列
+                # 2 = JSON 表有有单独的目录和 file_name 列
+                # 3 = 与版本 2 相同，但是还有 site 列 （用于合并站点）
+  "maps": { # JSON 到数据库的映射
+    ".*/data.json": { # db_file 的相对路径的正则匹配
+      "to_table": [ # 加载值到表中
         {
-          "node": "topics", # Reading data.json[topics] key value
-          "table": "topic" # Feeding data to topic table
+          "node": "topics", # 读取 data.json[topics] 的键值
+          "table": "topic" # 订阅 topic 表中的数据
         },
         {
-          "node": "comment_votes", # Reading data.json[comment_votes] key value
-          "table": "comment_vote", # Feeding data to comment_vote table
+          "node": "comment_votes", # 读取 data.json[comment_votes] 中的键值
+          "table": "comment_vote", # 订阅 comment_vote 表数据中的数据
           "key_col": "comment_hash",
-            # data.json[comment_votes] is a simple dict, the keys of the
-            # dict are loaded to comment_vote table comment_hash column
+            # data.json[comment_votes] 是一个样例字典，字典中的值被加载到 comment_vote 表的 comment_hash 列
 
           "val_col": "vote"
-            # The data.json[comment_votes] dict values loaded to comment_vote table vote column
+            # data.json[comment_votes] 字典中的值被加载到 comment_vote 表的 vote 列
 
         }
       ],
       "to_keyvalue": ["next_message_id", "next_topic_id"]
-        # Load data.json[next_topic_id] to keyvalues table
+        # 加载 data.json[next_topic_id] 到键值表
         # (key: next_message_id, value: data.json[next_message_id] value)
 
     },
@@ -49,20 +48,19 @@ The code below will do the following:
           "table": "user",
           "key_col": "path",
           "import_cols": ["user_id", "user_name", "max_size", "added"],
-            # Only import these columns to user table
+            # 只导入 user 表的这些列
           "replaces": {
             "path": {"content.json": "data.json"}
-              # Replace content.json to data.json in the
-              # value of path column (required for joining)
+              # 替换 content.json 的 path 列中的值到 data.json （需要加入）
           }
         }
       ],
-      "to_json_table": [ "cert_auth_type", "cert_user_id" ]  # Save cert_auth_type and cert_user_id directly to json table (easier and faster data queries)
+      "to_json_table": [ "cert_auth_type", "cert_user_id" ]  # 保存 cert_auth_type 和 cert_user_id directly 到 JSON 表 （用于更快更简便的数据查询）
     }
   },
-  "tables": { # Table definitions
-    "topic": { # Define topic table
-      "cols": [ # Cols of the table
+  "tables": { # 表的定义
+    "topic": { # 定义 topic 表
+      "cols": [ # 表的列
         ["topic_id", "INTEGER"],
         ["title", "TEXT"],
         ["body", "TEXT"],
@@ -72,11 +70,10 @@ The code below will do the following:
         ["json_id", "INTEGER REFERENCES json (json_id)"]
       ],
       "indexes": ["CREATE UNIQUE INDEX topic_key ON topic(topic_id, json_id)"],
-        # Indexes automatically created
+        # 自动创建的索引
 
       "schema_changed": 1426195822
-        # Last time of the schema changed, if the client's version is different then
-        # automatically destroy the old, create the new table then reload the data into it
+        # 上次映射改变的时间，如果客户端版本不同则自动破坏旧的，创建新的表然后重载里面的数据信息
 
     },
     "comment_vote": {
@@ -115,7 +112,7 @@ The code below will do the following:
 }
 ```
 
-## Example for data.json file
+## data.json 文件的例子
 ```json
 {
   "next_topic_id": 2,
@@ -173,7 +170,7 @@ The code below will do the following:
 }
 ```
 
-## Example for content.json file
+## content.json 文件的例子
 
 ```json
 {
