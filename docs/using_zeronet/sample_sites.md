@@ -125,6 +125,23 @@ Tutorial on ZeroBlog:
 
 ---
 
+## ZeroMe
+
+去中心化的、类似于 Twitter 的 P2P 社交网络。
+
+ - 在 ZeroMe user registry 存储用户信息
+ - 在被称作 Hub 的合并站点中存储帖子和评论
+ - 上传图片并作为可选文件
+ - 实时显示活动信息流
+ 
+![ZeroMe](/img/zerome.png)
+
+地址：[1MeFqFfFFGQfa1J3gJyYYUvb5Lksczq7nH](http://127.0.0.1:43110/1MeFqFfFFGQfa1J3gJyYYUvb5Lksczq7nH)
+
+[源代码](https://github.com/HelloZeroNet/ZeroMe)
+
+---
+
 ## ReactionGIFs
 
 可选文件的样例，视频文件只有在浏览器请求时才被下载。
