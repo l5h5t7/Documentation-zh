@@ -257,6 +257,27 @@ warpper的背景颜色
 
 ----
 
+
+### translate
+
+需要被翻译的文件。（使用在 `languages` 目录里面的语言 JSON 文件来完成翻译）
+
+**例子**: ["index.html", "js/all.js"]
+
+
+----
+
+
+### favicon
+
+站点的 favicon 。用站点专有的 favicon 替换 ZeroNet 默认的 favicon 。
+
+**例子**: favicon.ico
+
+
+----
+
+
 ### user_contents
 
 当前目录的用户规则。
