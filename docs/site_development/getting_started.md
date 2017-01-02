@@ -4,6 +4,13 @@ ZeroNet可以发布静态和动态的站点。
 
 尽管ZeroNet不能个运行像PHP或Ruby这样的脚本语言, 但是你可以用ZeroNet的API(叫做ZeroFrame), JavaScript (或者CoffeeScript) 和一个内置的数据库创建动态网站。
 
+## ZeroChat 教程
+
+在教程中我们将使用少于 100 行代码来构建一个点对点的、去中心化的、无服务器与后端的聊天站点。
+
+* [在 ZeroBlog 阅读](http://127.0.0.1:43110/Blog.ZeroNetwork.bit/?Post:99:ZeroChat+tutorial)
+* [在 Medium.com 阅读](https://decentralize.today/decentralized-p2p-chat-in-100-lines-of-code-d6e496034cd4)
+
 ## ZeroNet Debug模式
 
 以`--debug` 参数运行ZeroNet会让网站开发更容易
